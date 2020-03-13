@@ -5,6 +5,8 @@ import com.example.spock.repository.UserRepository;
 import com.example.spock.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
@@ -30,4 +32,8 @@ public class UserServiceImpl implements UserService {
         return name.toUpperCase();
     }
 
+    @Override
+    public List<User> findUserByAge(int rageA, int rageB) {
+        return userRepository.findUserByAge(rageA, rageB);
+    }
 }

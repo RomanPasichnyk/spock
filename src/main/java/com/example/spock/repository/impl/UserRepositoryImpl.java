@@ -4,14 +4,16 @@ import com.example.spock.model.User;
 import com.example.spock.repository.UserRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository {
+    private final List<User> users = initUsers();
+
     @Override
     public User findUserByName(String name) {
-        List<User> users = initUsers();
         User expectedUser = null;
         for (User user : users) {
             if (user.getName().equals(name)) {
@@ -25,8 +27,26 @@ public class UserRepositoryImpl implements UserRepository {
         return Arrays.asList(
                 new User("Roman", 15),
                 new User("Andrii", 18),
-                new User("Serhii", 21)
+                new User("Serhii", 21),
+                new User("Maksym", 27),
+                new User("Nazar", 31),
+                new User("Anton", 35),
+                new User("Anna", 12)
         );
     }
 
+    @Override
+    public List<User> findUserByAge(int rageA, int rageB) {
+        List<User> approvedUsers = new ArrayList<>();
+        try {
+            for (User user : users) {
+                if (user.getAge() > rageA && user.getAge() < rageB) {
+                    approvedUsers.add(user);
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Bad request");
+        }
+        return approvedUsers;
+    }
 }
