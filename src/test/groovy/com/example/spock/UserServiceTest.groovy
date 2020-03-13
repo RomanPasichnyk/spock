@@ -13,14 +13,14 @@ class UserServiceTest extends Specification {
 
     def "check method find by name"() {
         given:
-        userRepository.findUserByName("Roman") >> new User("Roman", 15)
-        def expectedUser = new User("Roman change in service", 15)
+        userRepository.findUserByName("Romana") >> new User("Romana", 15)
+        def expectedUser = new User("Romana change in service", 15)
 
         when:
-        def actualUser = userService.findUserByName("Roman")
+        def actualUser = userService.findUserByName("Romana")
 
         then:
         expectedUser == actualUser
-        1 * userRepository.findUserByName(_) >> new User("Roman", 15)
+        1 * userRepository.findUserByName(_) >> new User("Romana", 15)
     }
 }
