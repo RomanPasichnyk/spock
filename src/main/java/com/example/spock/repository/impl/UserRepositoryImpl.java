@@ -12,21 +12,21 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User findUserByName(String name) {
         List<User> users = initUsers();
+        User expectedUser = null;
         for (User user : users) {
             if (user.getName().equals(name)) {
-                return user;
+                expectedUser = user;
             }
         }
-        return new User("Not found", 0);
+        return expectedUser;
     }
 
     private List<User> initUsers() {
-        List<User> users = Arrays.asList(
+        return Arrays.asList(
                 new User("Roman", 15),
                 new User("Andrii", 18),
                 new User("Serhii", 21)
         );
-        return users;
     }
 
 }

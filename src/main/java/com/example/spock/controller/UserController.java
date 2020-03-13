@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("user")
 public class UserController {
-    public UserService userService;
+    private UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -23,5 +23,10 @@ public class UserController {
 
     public String doSomething(String test) {
         return userService.doSomething(test).toLowerCase();
+    }
+
+    @GetMapping("/getname")
+    public String getUserName(@RequestParam String name) {
+        return userService.findUserByName(name).getName();
     }
 }

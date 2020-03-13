@@ -4,7 +4,7 @@ import com.example.spock.controller.UserController
 import com.example.spock.model.User
 import com.example.spock.service.UserService
 import com.example.spock.service.impl.UserServiceImpl
-import spock.lang.Specification;
+import spock.lang.Specification
 
 class UserTest extends Specification {
     UserService userService = Mock(UserService)
@@ -43,7 +43,5 @@ class UserTest extends Specification {
         1 * userService1.doSomething(name) >> name + " Stub did something"
         result == name + ' Stub did something'
     }
-
-
 
 }

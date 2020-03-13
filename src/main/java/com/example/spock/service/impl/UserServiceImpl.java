@@ -3,7 +3,6 @@ package com.example.spock.service.impl;
 import com.example.spock.model.User;
 import com.example.spock.repository.UserRepository;
 import com.example.spock.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,8 +15,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByName(String name) {
-        User user = userRepository.findUserByName(name);
-        user.setName(user.getName() + " change in service");
+        User user = null;
+        try {
+            user = userRepository.findUserByName(name);
+            user.setName(user.getName() + " change in service");
+        } catch (NullPointerException e) {
+            System.err.println("User not found");
+        }
         return user;
     }
 

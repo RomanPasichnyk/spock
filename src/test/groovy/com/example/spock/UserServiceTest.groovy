@@ -4,10 +4,8 @@ import com.example.spock.model.User
 import com.example.spock.repository.UserRepository
 import com.example.spock.service.impl.UserServiceImpl
 import spock.lang.Specification
-import spock.lang.Unroll
 
 class UserServiceTest extends Specification {
-
     def userRepository = Mock(UserRepository)
     def userService = new UserServiceImpl(userRepository)
 
@@ -24,13 +22,13 @@ class UserServiceTest extends Specification {
         1 * userRepository.findUserByName(_) >> new User("Roman", 15)
     }
 
-    @Unroll("#name should have length #length")
-    def "name length"() {
-        expect:
-        name.size() == length
-
-        where:
-        name << ["Kirk", "Spock", "Scotty"]
-        length << [4, 5, 6]
-    }
+//    @Unroll("#name should have length #length")
+//    def "name length"() {
+//        expect:
+//        name.size() == length
+//
+//        where:
+//        name << ["Kirk", "Spock", "Scotty"]
+//        length << [4, 5, 6]
+//    }
 }
