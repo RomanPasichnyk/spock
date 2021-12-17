@@ -32,7 +32,6 @@ build/
 .idea/
 .mvn/
 target/
-mvnm.*[D[D[D[w[C[C[C[C[D[D[D[D[D[w[C[C[C[D
 *.iml
 mvnw
 mvnw.cmd
