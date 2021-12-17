@@ -22,7 +22,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     private List<User> initUsers() {
         List<User> users = Arrays.asList(
-                new User("Roman", 16),
+                new User("Roman", 15),
                 new User("Andrii", 18),
                 new User("Serhii", 21)
         );
